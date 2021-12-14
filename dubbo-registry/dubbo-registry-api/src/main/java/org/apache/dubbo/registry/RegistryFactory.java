@@ -45,6 +45,6 @@ public interface RegistryFactory {
      * @return Registry reference, never return empty value
      */
     @Adaptive({"protocol"})
-    Registry getRegistry(URL url);
+    Registry getRegistry(URL url);//这是一个适配器方法，Dubbo 在运行时会为其动态生成相应的 “$Adaptive” 类型
 
 }

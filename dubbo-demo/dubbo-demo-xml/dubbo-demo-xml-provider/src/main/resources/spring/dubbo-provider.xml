@@ -32,6 +32,7 @@
     <dubbo:protocol name="rest" port="-1"/>
     <dubbo:protocol name="tri" port="-1"/>
 
+    <!--对外暴露-->
     <bean id="demoService" class="org.apache.dubbo.demo.provider.DemoServiceImpl"/>
     <bean id="greetingService" class="org.apache.dubbo.demo.provider.GreetingServiceImpl"/>
     <bean id="restDemoService" class="org.apache.dubbo.demo.provider.RestDemoServiceImpl"/>

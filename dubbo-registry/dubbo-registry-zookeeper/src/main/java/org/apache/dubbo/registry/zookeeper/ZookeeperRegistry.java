@@ -174,6 +174,9 @@ public class ZookeeperRegistry extends CacheableFailbackRegistry {
             } else {
                 CountDownLatch latch = new CountDownLatch(1);
                 try {
+                    //其中 Protocol 为 consumer ，表示是 Consumer 的订阅协议，
+                    // 其中的 category 参数表示要订阅的分类，这里要订阅 providers、configurators 以及 routers 三个分类；
+                    // interface 参数表示订阅哪个服务接口，这里要订阅的是暴露 org.apache.dubbo.demo.DemoService 实现的 Provider。
                     List<URL> urls = new ArrayList<>();
                     for (String path : toCategoriesPath(url)) {
                         ConcurrentMap<NotifyListener, ChildListener> listeners = zkListeners.computeIfAbsent(url, k -> new ConcurrentHashMap<>());

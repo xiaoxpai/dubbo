@@ -25,14 +25,19 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+* 实现了DemoService接口，并且在该目录下能被扫描到，暴露成dubbo服务
+*/
 @DubboService
 public class DemoServiceImpl implements DemoService {
     private static final Logger logger = LoggerFactory.getLogger(DemoServiceImpl.class);
 
     @Override
     public String sayHello(String name) {
-        logger.info("Hello " + name + ", request from consumer: " + RpcContext.getServiceContext().getRemoteAddress());
-        return "Hello " + name + ", response from provider: " + RpcContext.getServiceContext().getLocalAddress();
+        logger.info("Hello " + name + ", request from consumer: "
+            + RpcContext.getServiceContext().getRemoteAddress());
+        return "Hello " + name + ", response from provider: "
+            + RpcContext.getServiceContext().getLocalAddress();
     }
 
     @Override

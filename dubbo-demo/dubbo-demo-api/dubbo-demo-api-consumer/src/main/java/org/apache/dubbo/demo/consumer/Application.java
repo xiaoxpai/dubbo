@@ -34,16 +34,27 @@ public class Application {
             runWithBootstrap();
         }
     }
-
+   // dubbo://172.17.32.91:20880/org.apache.dubbo.demo.DemoService
+       // ?anyhost=true
+       // &application=dubbo-demo-api-provider
+       // &dubbo=2.0.2
+       // &interface=org.apache.dubbo.demo.DemoService
+       // &methods=sayHello,sayHelloAsync
+       // &pid=32508
+       // &release=
+       // &side=provider
+       // &timestamp=1593253404714
     private static boolean isClassic(String[] args) {
         return args.length > 0 && "classic".equalsIgnoreCase(args[0]);
     }
 
     private static void runWithBootstrap() {
+        // 创建ReferenceConfig,其中指定了引用的接口DemoService
         ReferenceConfig<DemoService> reference = new ReferenceConfig<>();
         reference.setInterface(DemoService.class);
         reference.setGeneric("true");
 
+        // 创建DubboBootstrap，指定ApplicationConfig以及RegistryConfig
         DubboBootstrap bootstrap = DubboBootstrap.getInstance();
         bootstrap.application(new ApplicationConfig("dubbo-demo-api-consumer"))
             .registry(new RegistryConfig("zookeeper://127.0.0.1:2181"))
@@ -51,6 +62,7 @@ public class Application {
             .reference(reference)
             .start();
 
+        // 获取DemoService实例并调用其方法
         DemoService demoService = bootstrap.getCache().get(reference);
         String message = demoService.sayHello("dubbo");
         System.out.println(message);

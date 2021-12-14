@@ -18,10 +18,15 @@ package org.apache.dubbo.demo;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+*  时间：2021年12月14日 22:21:47
+ * 邮箱：alf_xiaolh@163.com
+*/
 public interface DemoService {
 
-    String sayHello(String name);
+    String sayHello(String name);//同步调用
 
+    //异步调用
     default CompletableFuture<String> sayHelloAsync(String name) {
         return CompletableFuture.completedFuture(sayHello(name));
     }
