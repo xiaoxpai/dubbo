@@ -44,6 +44,7 @@ public interface RegistryFactory {
      * @param url Registry address, is not allowed to be empty
      * @return Registry reference, never return empty value
      */
+    //Dubbo SPI 中有一个依赖 URL 的重要场景——适配器方法，是被 @Adaptive 注解标注的， URL 一个很重要的作用就是与 @Adaptive 注解一起选择合适的扩展实现类。
     @Adaptive({"protocol"})
     Registry getRegistry(URL url);//这是一个适配器方法，Dubbo 在运行时会为其动态生成相应的 “$Adaptive” 类型
 
