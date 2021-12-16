@@ -1,0 +1,3 @@
+io.github.xiaoxpai.test.spi.impl.Log4j2
+
+io.github.xiaoxpai.test.spi.impl.Logback

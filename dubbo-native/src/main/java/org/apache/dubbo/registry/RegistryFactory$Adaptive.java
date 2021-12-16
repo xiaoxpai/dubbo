@@ -19,6 +19,9 @@ package org.apache.dubbo.registry;
 import org.apache.dubbo.rpc.model.ScopeModel;
 import org.apache.dubbo.rpc.model.ScopeModelUtil;
 
+/**
+ * 适配器模式的实现类
+ */
 public class RegistryFactory$Adaptive implements org.apache.dubbo.registry.RegistryFactory {
     public org.apache.dubbo.registry.Registry getRegistry(org.apache.dubbo.common.URL arg0) {
         if (arg0 == null) throw new IllegalArgumentException("url == null");
