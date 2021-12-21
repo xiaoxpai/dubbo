@@ -9,4 +9,11 @@ public class SPIAnnotation {
     //3 例如，在通过 Dubbo SPI 加载 Protocol 接口实现时，如果没有明确指定扩展名，
     // 则默认会将 @SPI 注解的 value 值作为扩展名，即加载 dubbo 这个扩展名对应的
     // org.apache.dubbo.rpc.protocol.dubbo.DubboProtocol 这个扩展实现类，相关的 SPI 配置文件在 dubbo-rpc-dubbo 模块中
+
+
+
+    //2021.12.22
+    //org.apache.dubbo.common.extension.ExtensionLoader
+    // ExtensionLoader 这个类主要是是处理 @SPI 注解的，Dubbo SPI 的核心逻辑几乎都封装在 ExtensionLoader 之中
+    //Protocol protocol = ExtensionLoader.getExtensionLoader(Protocol.class).getExtension("dubbo");
 }
